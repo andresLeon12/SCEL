@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<title>Activar periodos</title>
+		<meta name="description" content="">
+		<meta name="author" content="AnDrEs">
+
+		<meta name="viewport" content="width=device-width; initial-scale=1.0">
+
+		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+		<link rel="shortcut icon" href="/favicon.ico">
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <link type="text/css" rel="stylesheet" href="../Css/jquery-ui-1.10.4.custom.css" />
+        <script src="../Scripts/jquery-2.0.2.js"></script>
+        <script src="../Scripts/jquery-ui.js"> </script>
+        <script type="text/javascript">
+        jQuery(function($){
+              $.datepicker.regional['es'] = {
+                    closeText: 'Cerrar',
+                    prevText: '&#x3c;Ant',
+                    nextText: 'Sig&#x3e;',
+                    currentText: 'Hoy',
+                    monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio',
+                    'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+                    monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun',
+                    'Jul','Ago','Sep','Oct','Nov','Dic'],
+                    dayNames: ['Domingo','Lunes','Martes','Mi&eacute;rcoles','Jueves','Viernes','S&aacute;bado'],
+                    dayNamesShort: ['Dom','Lun','Mar','Mi&eacute;','Juv','Vie','S&aacute;b'],
+                    dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','S&aacute;'],
+                    weekHeader: 'Sm',
+                    dateFormat: 'yy-mm-dd',
+                    firstDay: 1,
+                    isRTL: false,
+                    showMonthAfterYear: false,
+                    yearSuffix: ''};
+              $.datepicker.setDefaults($.datepicker.regional['es']);
+        });    
+
+        $(document).ready(function() {
+           $("#calendario1").datepicker();
+            $("#calendario2").datepicker();
+           
+        });
+       </script>
+	</head>
+
+	<body>
+        <h1>Activar periodos</h1>
+		<form action="../php_control/metodosSE.php" method="post">
+            <label>Fecha de inicio: </label><input type="text" name="fechaInicio" id="calendario1" readonly="readonly" /><br>
+            <label>Fecha de terminación</label><input type="text" name="fechaFin" id="calendario2" readonly="readonly" /><br>
+            <input type="submit" value="Activar" />
+        </form>
+	</body>
+</html>
+
