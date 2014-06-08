@@ -277,6 +277,25 @@ class conexion {
         }
         return null;
     }
+	//Funcion que obtiene las claves de todas las materias
+	function getAllClavesMateria(){
+        //$this->Materias = new Materias();
+        $this->crearConexion();
+        $clv = array();
+        $query = "select clvMatNov from Materia"; 
+		$result = mysqli_query($this->conexion,$query);
+		if($result!=null){
+			if(mysqli_affected_rows($this->conexion)!=0){
+				$cont = 0;
+				while($row2 = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+					$clv[$cont] = $row2['clvMatNov'];
+					$cont = $cont+1;
+				}
+				return $clv;
+			}
+		}
+		return null;
+    }
     //Funcion que obtiene nombres de materias en base a su clave
     function getMaterias($claveMateria){
         //$this->Materias = new Materias();
@@ -308,22 +327,30 @@ class conexion {
                 return $mat;
                 //return $totalRegistros;
             }
-            //if($totalRegistros>0){
-               
-                //for( $contador = 0 ; $contador < $totalRegistros ; $contador++ ){
-                  //  $consulta->data_seek($contador);
-                    
-                    //$consulta->bind_result($clv[$contador]);
-                    //$consulta->fetch();
-                //}
-                //return $clv;
-            //}
             
         } catch (Exception $ex) {
             $ex->getMessage();
             return null;
         }
         return null;
+    }
+    function getAllNombresMateria(){
+        //$this->Materias = new Materias();
+        $this->crearConexion();
+        $clv = array();
+        $query = "select nomMatNov from Materia"; 
+		$result = mysqli_query($this->conexion,$query);
+		if($result!=null){
+			if(mysqli_affected_rows($this->conexion)!=0){
+				$cont = 0;
+				while($row2 = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+					$clv[$cont] = $row2['nomMatNov'];
+					$cont = $cont+1;
+				}
+				return $clv;
+			}
+		}
+		return null;
     }
 	//Funcion que nos devolvera que tipo de calificacion de ingresara, primer paracial,segundo...
 	function getTipoCalif($matricula,$clave){
